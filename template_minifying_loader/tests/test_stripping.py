@@ -2,8 +2,8 @@ from django.test import SimpleTestCase
 
 from ..utils import strip_spaces_in_template
 
-class TemplateStrippingTestCase(SimpleTestCase):
 
+class TemplateStrippingTestCase(SimpleTestCase):
 
     def test_html_stripping(self):
         source = """<html>

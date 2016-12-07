@@ -4,7 +4,9 @@ from django.template import Template
 
 from ..utils import get_template_minifier_strip_function
 
+
 class Loader(AppDirectoriesLoader):
+
     def get_template(self, template_name, template_dirs=None, skip=None):
         template = super().get_template(template_name, template_dirs)
 
