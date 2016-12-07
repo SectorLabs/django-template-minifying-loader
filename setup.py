@@ -17,10 +17,6 @@ setup(
     author='Sector Labs',
     author_email='open-source@sectorlabs.ro',
     keywords=['django', 'template', 'minification', 'html', 'minifier'],
-    packages=[
-        'template_minifying_loader',
-        'template_minifying_loader.loaders',
-    ],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
