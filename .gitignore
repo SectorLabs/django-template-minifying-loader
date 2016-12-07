@@ -1,0 +1,10 @@
+# Ignore virtual environments
+env/
+
+# Ignore PyCharm
+.idea
+.DS_Store
+
+# Ignore Python byte code cache
+*.pyc
+__pycache__
