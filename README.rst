@@ -71,17 +71,6 @@ Advanced usage:
 ---------------
 
 Using modified settings You can:
-* turn off stripping spaces between HTML tags
-
-.. code-block:: python
-
-  TEMPLATE_MINIFIER_HTML_TAGS = False # default = True
-
-* turn off stripping spaces between Django template tags (\s{%, %}\s)
-
-.. code-block:: python
-
-  TEMPLATE_MINIFIER_TEMPLATE_TAGS = False # default = True
 
 * turn off all stripping
 

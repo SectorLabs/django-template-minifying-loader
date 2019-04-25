@@ -7,19 +7,36 @@ def strip_spaces_in_template(template_source):
     """
     Default function used to preprocess templates.
 
-    Use settings.TEMPLATE_MINIFIER_HTML_TAGS or
-    settings.TEMPLATE_MINIFIER_TEMPLATE_TAGS to change
-    its behaviour.
-
     To use Your own stripping function do not change this function, use
     **settings.TEMPLATE_MINIFIER_STRIP_FUNCTION property**!
     """
-    if (getattr(settings, 'TEMPLATE_MINIFIER_HTML_TAGS', True)):
-        template_source = re.sub(r'>\s+<', '><', template_source)
 
-    if (getattr(settings, 'TEMPLATE_MINIFIER_TEMPLATE_TAGS', True)):
-        template_source = re.sub(r'\s+{ ?%', ' {%', template_source)
-        template_source = re.sub(r'% ?}\s+', '%} ', template_source)
+    # remove comments
+    template_source = re.sub(r'{#.*#}', '', template_source)
+
+    # strip whitespace between html tags
+    template_source = re.sub(r'>\s+<', '><', template_source, flags=re.MULTILINE)
+
+    # strip whitespace around django variables
+    template_source = re.sub(r'>\s+{{', '>{{', template_source, flags=re.MULTILINE)
+    template_source = re.sub(r'}}\s+<', '}}<', template_source, flags=re.MULTILINE)
+
+    # strip whitespace around django and html tags
+    template_source = re.sub(r'>\s+{%', '>{%', template_source, flags=re.MULTILINE)
+    template_source = re.sub(r'%}\s+<', '%}<', template_source, flags=re.MULTILINE)
+
+    # strip whitespace between django tags
+    template_source = re.sub(r'%}\s+{%', '%}{%', template_source, flags=re.MULTILINE)
+
+    # strip whitespace between django tags and variables
+    template_source = re.sub(r'%}\s+{{', '%}{{', template_source, flags=re.MULTILINE)
+    template_source = re.sub(r'}}\s+{%', '}}{%', template_source, flags=re.MULTILINE)
+
+    # condense any white space
+    template_source = re.sub(r'\s{2,}', ' ', template_source, flags=re.MULTILINE)
+
+    # strip leading and trailing html
+    template_source = template_source.strip()
 
     return template_source
 
