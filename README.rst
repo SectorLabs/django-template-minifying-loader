@@ -78,10 +78,6 @@ Using modified settings You can:
 
   TEMPLATE_MINIFIER_FILENAME_EXTENSIONS = ('.html', '.htm', )
 
-.. code-block:: python
-
-  TEMPLATE_MINIFIER = False # default = True
-
 * turn off all stripping
 
 .. code-block:: python
@@ -92,9 +88,7 @@ Using modified settings You can:
 
 .. code-block:: python
 
-  TEMPLATE_MINIFER_STRIP_FUNCTION = 'template_minifier.utils.strip_spaces_in_template'
-
-(There is a typo in variable name, see #2 for details)
+  TEMPLATE_MINIFIER_STRIP_FUNCTION = 'template_minifier.utils.strip_spaces_in_template'
 
 * **use only in production**
 
