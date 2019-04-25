@@ -7,16 +7,10 @@ from ..utils import get_template_minifier_strip_function
 
 class Loader(FilesystemLoader):
 
-    def get_template(self, template_name, template_dirs=None, skip=None):
-        template = super().get_template(template_name, template_dirs)
+    def get_contents(self, origin):
+        content = super().get_contents(origin)
 
-        template_source = template.source
         if getattr(settings, 'TEMPLATE_MINIFIER', True):
-            template_source = get_template_minifier_strip_function()(template.source)
+            content = get_template_minifier_strip_function()(content)
 
-        return Template(
-            template_source,
-            template.origin,
-            template.name,
-            template.engine
-        )
+        return content

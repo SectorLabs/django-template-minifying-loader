@@ -35,9 +35,12 @@ Modify Your Django project settings's module.
         ],
         'OPTIONS': {
             'loaders': [
-                'django.template.loaders.cached.Loader',
-                'template_minifying_loader.loaders.filesystem.Loader',
-                'template_minifying_loader.loaders.app_directories.Loader',
+                (
+                    'django.template.loaders.cached.Loader', [
+                        'template_minifying_loader.loaders.filesystem.Loader',
+                        'template_minifying_loader.loaders.app_directories.Loader',
+                    ],
+                ),
             ],
         },
     },
