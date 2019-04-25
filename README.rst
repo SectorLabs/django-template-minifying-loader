@@ -72,6 +72,16 @@ Advanced usage:
 
 Using modified settings You can:
 
+* turn on stripping only for templates with given extensions
+
+.. code-block:: python
+
+  TEMPLATE_MINIFIER_FILENAME_EXTENSIONS = ('.html', '.htm', )
+
+.. code-block:: python
+
+  TEMPLATE_MINIFIER = False # default = True
+
 * turn off all stripping
 
 .. code-block:: python
