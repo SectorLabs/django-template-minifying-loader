@@ -1,6 +1,7 @@
 import re
 
 from django.conf import settings
+from django.utils.module_loading import import_string
 
 
 def strip_spaces_in_template(template_source):
@@ -30,6 +31,7 @@ def get_template_minifier_strip_function():
     TEMPLATE_MINIFIER_STRIP_FUNCTION setting.
     """
     if getattr(settings, 'TEMPLATE_MINIFIER_STRIP_FUNCTION', False):
-        return settings.TEMPLATE_MINIFIER_STRIP_FUNCTION
+        fce = import_string(settings.TEMPLATE_MINIFIER_STRIP_FUNCTION)
+        return fce
     else:
         return strip_spaces_in_template
