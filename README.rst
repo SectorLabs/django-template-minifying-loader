@@ -78,6 +78,12 @@ Using modified settings You can:
 
   TEMPLATE_MINIFIER_FILENAME_EXTENSIONS = ('.html', '.htm', )
 
+* turn off stripping for particular directories
+
+.. code-block:: python
+
+  TEMPLATE_MINIFIER_EXCLUDED_DIRS = ('admin/', )
+
 * turn off all stripping
 
 .. code-block:: python

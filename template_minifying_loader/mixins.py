@@ -12,6 +12,14 @@ class TemplateMinifierMixin:
         if not origin.template_name.endswith(allowed_extensions):
             return content
 
+
+
+        exclude_dirs = getattr(settings, 'TEMPLATE_MINIFIER_EXCLUDED_DIRS', ('admin/', ))
+        print(origin.template_name)
+        print(exclude_dirs)
+        if origin.template_name.startswith(exclude_dirs):
+            return content
+
         if getattr(settings, 'TEMPLATE_MINIFIER', True):
             content = get_template_minifier_strip_function()(content)
 
