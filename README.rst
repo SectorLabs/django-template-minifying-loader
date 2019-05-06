@@ -128,6 +128,16 @@ Known issues:
 Or just set TEMPLATE_MINIFIER_TEMPLATE_TAGS = False
 
 
+* Don't use multiline {% blockquote %} without parameter `trimmed <https://docs.djangoproject.com/en/2.1/topics/i18n/translation/#blocktrans-template-tag>`_.
+Otherwise your blockquote translations won't be translated. Correct usage:
+
+.. code-block:: python
+
+    {% blockquote trimmed %}
+        My paragraph...
+    {% blockquote %}
+
+
 To do:
 ------
 * {% new_line %} template_tag
