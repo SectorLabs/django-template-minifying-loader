@@ -8,3 +8,6 @@ env/
 # Ignore Python byte code cache
 *.pyc
 __pycache__
+
+# Ignore egg
+django_template_minifying_loader.egg-info
