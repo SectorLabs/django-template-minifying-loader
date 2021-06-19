@@ -1,13 +1,13 @@
-import os
-
 from setuptools import find_packages, setup
+
+import django_spaceless_templates
 
 readme = open('README.rst').read()
 requirements = open('requirements.txt').readlines()
 
 setup(
     name='django-spaceless-templates',
-    version='1.0',
+    version=django_spaceless_templates.__version__,
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',

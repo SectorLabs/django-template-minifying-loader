@@ -1,7 +1,4 @@
-from .loaders import filesystem
-from .loaders import app_directories
 
-__all__ = [
-    'filesystem',
-    'app_directories'
-]
+# version is automatically bumped by Github Actions
+# See: https://github.com/grst/python-ci-versioneer
+__version__ = "develop"
