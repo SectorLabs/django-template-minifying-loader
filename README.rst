@@ -1,5 +1,5 @@
-django-template-minifying-loader
-================================
+Django Spaceless Templates
+==========================
 
 Django application, providing simple template loader. It reduces HTML output in templates by stripping out whitespace characters between HTML and django template tags. This is an update of `django-template-minifier <https://github.com/iRynek/django-template-minifier>`_ that works with django 1.10.
 
@@ -17,7 +17,7 @@ Installation
 
 .. code-block:: bash
  
-  pip install django-template-minifying-loader
+  pip install django-spaceless-templates
 
 Basic usage
 -----------
