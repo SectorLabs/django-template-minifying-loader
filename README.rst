@@ -1,24 +1,26 @@
 Django Spaceless Templates
 ==========================
 
-Django application, providing simple template loader. It reduces HTML output in templates by stripping out whitespace characters between HTML and django template tags. This is an update of `django-template-minifier <https://github.com/iRynek/django-template-minifier>`_ that works with django 1.10.
+Django application, providing simple template loader. It reduces HTML output in templates by stripping out whitespace
+characters between HTML and django template tags. With cached template loader, whitespace stripping is done only once
+during template compilation. This is more efficient than solutions based on {% spaceless %} tag or middleware minification.
 
 This package is based on following unmaintained packages:
 
 * `Django template minifying loader <https://github.com/SectorLabs/django-template-minifying-loader>`_
 * `Django template minified <https://github.com/iRynek/django-template-minifier>`_
 
-Things to note:
+How much bandwidth does it is save? Check data from real project:
 
-* It **does not** make any fancy compression, to do that use `GZip Middleware <https://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.gzip>`_.
-
-* To compress CSS and JS use `django-compressor <https://github.com/jezdez/django_compressor>`_.
+================  ========  =================
+Normal HTML       109kB     15kB gzipped
+Spaceless HTML    67kB      13kB gzipped
+**Saved**         **38 %**  **12 % gzipped**
+================  ========  =================
 
 
 Installation
 ------------
-
-* via `virtualenv <http://www.virtualenv.org/en/latest/#what-it-does>`_ - yup we highly recommend it!
 
 .. code-block:: bash
  
@@ -69,11 +71,9 @@ Modify Your Django project settings's module.
     },
   ]
 
-Be happy having less spaces and new lines in Your templates!
 
-
-Advanced usage:
----------------
+Settings
+--------
 
 Using modified settings You can:
 
@@ -108,30 +108,20 @@ Using modified settings You can:
   if DEBUG:
     TEMPLATE_MINIFIER = False
 
-Known issues:
--------------
-* Don't use // one line comments in Your inline javascript &lt;script&gt; or .js templates. In some cases, if You are using lot of {% if %} there, it can comment out }; or }, for example:
+Known issues
+------------
+
+* Don't use // one line comments in your inline javascript <script> tags. **Use /* */ instead**:
 
 .. code-block:: js
 
-  // comment something - !!it's evil!!
-  {% if %}
-  function name(){
+  // comment something - !!it's evil!! and cause the rest of JS code is commented out.
+  function name() {
   }
-  {% endif %}
-
-**Use /* */ instead**
-
-.. code-block:: js
 
   /* comment something - it's nice and clean <3! */
-  {% if %}
-  function name(){
+  function name() {
   }
-  {% endif %}
-
-Or just set TEMPLATE_MINIFIER_TEMPLATE_TAGS = False
-
 
 * Don't use multiline {% blockquote %} without parameter `trimmed <https://docs.djangoproject.com/en/2.1/topics/i18n/translation/#blocktrans-template-tag>`_.
   Otherwise your blockquote translations won't be translated. Correct usage:
@@ -142,21 +132,23 @@ Or just set TEMPLATE_MINIFIER_TEMPLATE_TAGS = False
         My paragraph...
     {% blockquote %}
 
-Running Tests:
---------------
+* To preserve extra space use ``{{ " " }}``:
+
+.. code-block:: html
+
+    <div>Text {{ " " }} {{ variable }}</div>
+
+Running Tests
+-------------
 
 ::
 
     (myenv) $ pip install -e .
     (myenv) $ python ./runtests.py
 
-Check package:
---------------
+Check package
+-------------
 
 .. code-block:: bash
 
     python -m build; python -m twine check dist/*
-
-To do:
-------
-* {% new_line %} template_tag
