@@ -3,6 +3,11 @@ Django Spaceless Templates
 
 Django application, providing simple template loader. It reduces HTML output in templates by stripping out whitespace characters between HTML and django template tags. This is an update of `django-template-minifier <https://github.com/iRynek/django-template-minifier>`_ that works with django 1.10.
 
+This package is based on following unmaintained packages:
+
+* `Django template minifying loader <https://github.com/SectorLabs/django-template-minifying-loader>`_
+* `Django template minified <https://github.com/iRynek/django-template-minifier>`_
+
 Things to note:
 
 * It **does not** make any fancy compression, to do that use `GZip Middleware <https://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.gzip>`_.
