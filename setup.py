@@ -13,6 +13,7 @@ setup(
     license='MIT License',
     description='Simple Django template loader that minifies html output.',
     long_description=readme,
+    long_description_content_type='text/x-rst',
     url='https://github.com/martinsvoboda/django-spaceless-templates',
     author='Martin Svoboda',
     author_email='martin.svoboda@gmail.com',

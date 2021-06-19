@@ -129,7 +129,7 @@ Or just set TEMPLATE_MINIFIER_TEMPLATE_TAGS = False
 
 
 * Don't use multiline {% blockquote %} without parameter `trimmed <https://docs.djangoproject.com/en/2.1/topics/i18n/translation/#blocktrans-template-tag>`_.
-Otherwise your blockquote translations won't be translated. Correct usage:
+  Otherwise your blockquote translations won't be translated. Correct usage:
 
 .. code-block:: python
 
@@ -138,12 +138,19 @@ Otherwise your blockquote translations won't be translated. Correct usage:
     {% blockquote %}
 
 Running Tests:
--------------
+--------------
 
 ::
 
     (myenv) $ pip install -e .
     (myenv) $ python ./runtests.py
+
+Check package:
+--------------
+
+.. code-block:: bash
+
+    python -m build; python -m twine check dist/*
 
 To do:
 ------
