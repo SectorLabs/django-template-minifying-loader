@@ -1,5 +1,6 @@
 # Ignore virtual environments
 env/
+.python-version
 
 # Ignore PyCharm
 .idea
@@ -10,4 +11,4 @@ env/
 __pycache__
 
 # Ignore egg
-django_template_minifying_loader.egg-info
+django_spaceless_templates.egg-info

@@ -37,8 +37,8 @@ Modify Your Django project settings's module.
             'loaders': [
                 (
                     'django.template.loaders.cached.Loader', [
-                        'template_minifying_loader.loaders.filesystem.Loader',
-                        'template_minifying_loader.loaders.app_directories.Loader',
+                        'django_spaceless_templates.loaders.filesystem.Loader',
+                        'django_spaceless_templates.loaders.app_directories.Loader',
                     ],
                 ),
             ],
@@ -57,8 +57,8 @@ Modify Your Django project settings's module.
         ],
         'OPTIONS': {
             'loaders': [
-                'template_minifying_loader.loaders.filesystem.Loader',
-                'template_minifying_loader.loaders.app_directories.Loader',
+                'django_spaceless_templates.loaders.filesystem.Loader',
+                'django_spaceless_templates.loaders.app_directories.Loader',
             ],
         },
     },
@@ -137,6 +137,13 @@ Otherwise your blockquote translations won't be translated. Correct usage:
         My paragraph...
     {% blockquote %}
 
+Running Tests:
+-------------
+
+::
+
+    (myenv) $ pip install -e .
+    (myenv) $ python ./runtests.py
 
 To do:
 ------

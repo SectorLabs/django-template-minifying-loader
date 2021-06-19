@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 
-from ..utils import strip_spaces_in_template
+from django_spaceless_templates.utils import strip_spaces_in_template
 
 
 class strip_spaces_in_template_TestCase(SimpleTestCase):
