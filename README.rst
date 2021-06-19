@@ -3,14 +3,14 @@ Django Spaceless Templates
 
 Django application, providing simple template loader. It reduces HTML output in templates by stripping out whitespace
 characters between HTML and django template tags. With cached template loader, whitespace stripping is done only once
-during template compilation. This is more efficient than solutions based on {% spaceless %} tag or middleware minification.
+during template compilation. This is more efficient than solutions based on ``{% spaceless %}`` tag or middleware minification.
 
 This package is based on following unmaintained packages:
 
 * `Django template minifying loader <https://github.com/SectorLabs/django-template-minifying-loader>`_
 * `Django template minified <https://github.com/iRynek/django-template-minifier>`_
 
-How much bandwidth does it is save? Check data from real project:
+How much bandwidth does it save? Check data from real project:
 
 ================  ========  =================
 Normal HTML       109kB     15kB gzipped
@@ -111,7 +111,7 @@ Using modified settings You can:
 Known issues
 ------------
 
-* Don't use // one line comments in your inline javascript <script> tags. **Use /* */ instead**:
+* Don't use ``//`` one line comments in your inline javascript ``<script>`` tags. **Use /* */ instead**:
 
 .. code-block:: js
 
@@ -123,7 +123,7 @@ Known issues
   function name() {
   }
 
-* Don't use multiline {% blockquote %} without parameter `trimmed <https://docs.djangoproject.com/en/2.1/topics/i18n/translation/#blocktrans-template-tag>`_.
+* Don't use multiline ``{% blockquote %}`` without parameter `trimmed <https://docs.djangoproject.com/en/2.1/topics/i18n/translation/#blocktrans-template-tag>`_.
   Otherwise your blockquote translations won't be translated. Correct usage:
 
 .. code-block:: python
