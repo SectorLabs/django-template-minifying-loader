@@ -1,5 +1,7 @@
 # Ignore virtual environments
 env/
+.python-version
+
 
 # Ignore PyCharm
 .idea
@@ -8,3 +10,11 @@ env/
 # Ignore Python byte code cache
 *.pyc
 __pycache__
+
+# Ignore build
+build/
+dist/
+.tox/
+
+# Ignore egg
+django_spaceless_templates.egg-info
